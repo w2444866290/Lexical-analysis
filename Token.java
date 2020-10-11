@@ -15,7 +15,7 @@ public class Token {
     public static void main(String[] args) {
         Token run = new Token();
         try {
-            file = new File(args[0]);
+            file = new File("token.txt");
             FileInputStream input = new FileInputStream(file);
             try {
                 int n = 0;
@@ -40,68 +40,82 @@ public class Token {
                         String reserve = run.token.toString();
                         switch (reserve) {
                             case "BEGIN":
-                                System.out.print("Begin\r\n");
+                                System.out.println("Begin");
                                 break;
                             case "END":
-                                System.out.print("End\r\n");
+                                System.out.println("End");
                                 break;
                             case "FOR":
-                                System.out.print("For\r\n");
+                                System.out.println("For");
                                 break;
                             case "IF":
-                                System.out.print("If\r\n");
+                                System.out.println("If");
                                 break;
                             case "THEN":
-                                System.out.print("Then\r\n");
+                                System.out.println("Then");
                                 break;
                             case "ELSE":
-                                System.out.print("Else\r\n");
+                                System.out.println("Else");
                                 break;
                             default:
-                                System.out.print("Ident(" + reserve + ")\r\n");
+                                System.out.println("Ident(" + reserve + ")");
                         }
                         run.token = new StringBuilder();
                         continue;
                     }
-                    else if (Character.isDigit((char)n)){
-                        while ((char)n == '0')
+                    else if (Character.isDigit((char)n)) {
+                        boolean notZero = false;
+                        if ((char)n == '0') {
                             n = input.read();
-                        run.token.append((char)n);
-                        n = input.read();
-                        while(Character.isDigit((char)n)) {
-                            run.token.append((char)n);
-                            n = input.read();
+                            while((char)n == '0')
+                                n = input.read();
+                            while(Character.isDigit((char)n)) {
+                                notZero = true;
+                                run.token.append((char)n);
+                                n = input.read();
+                            }
+                            if (notZero)
+                                System.out.println("Int(" + run.token.toString() + ")");
+                            else
+                                System.out.println("Int(0)");
+                            notZero = false;
                         }
-                        System.out.print("Int(" + run.token.toString() + ")\r\n");
+                        else {
+                            while(Character.isDigit((char)n)) {
+                                run.token.append((char)n);
+                                n = input.read();
+                            }
+                            System.out.println("Int(" + run.token.toString() + ")");
+                        }
                         run.token = new StringBuilder();
                         continue;
                     }
                     else if ((char)n == '+') {
-                        System.out.print("Plus\r\n");
+                        System.out.println("Plus");
                     }
                     else if ((char)n == '*') {
-                        System.out.print("Star\r\n");
+                        System.out.println("Star");
                     }
                     else if ((char)n == ',') {
-                        System.out.print("Comma\rn");
+                        System.out.println("Comma");
                     }
                     else if ((char)n == '(') {
-                        System.out.print("LParenthesis\r\n");
+                        System.out.println("LParenthesis");
                     }
                     else if ((char)n == ')') {
-                        System.out.print("RParenthesis\r\n");
+                        System.out.println("RParenthesis");
                     }
                     else if ((char)n == ':') {
                         n = input.read();
                         if ((char)n == '=')
-                            System.out.print("Assign\r\n");
+                            System.out.println("Assign");
                         else {
-                            System.out.print("Colon\r\n");
+                            System.out.println("Colon");
                             continue;
                         }
                     }
                     else {
-                        System.out.print("Unknown\r\n");
+                        System.out.println("Unknown");
                         break;
                     }
                     n = input.read();
