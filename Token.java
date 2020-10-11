@@ -21,14 +21,11 @@ public class Token {
                 int n = 0;
                 n = input.read();
                 // skip space in front of page
-                while (Character.isSpaceChar((char)n) || Character.isWhitespace((char)n)) {
-                    System.out.print((char)n);
+                while (Character.isSpaceChar((char)n) || Character.isWhitespace((char)n))
                     n = input.read();
-                }
                 while (n != -1) {
                     // skip space between words
                     if (Character.isSpaceChar((char)n) || Character.isWhitespace((char)n)) {
-                        System.out.print((char)n);
                         n = input.read();
                         continue;
                     }
@@ -43,25 +40,25 @@ public class Token {
                         String reserve = run.token.toString();
                         switch (reserve) {
                             case "BEGIN":
-                                System.out.println("Begin");
+                                System.out.print("Begin/r/n");
                                 break;
                             case "END":
-                                System.out.println("End");
+                                System.out.print("End/r/n");
                                 break;
                             case "FOR":
-                                System.out.println("For");
+                                System.out.print("For/r/n");
                                 break;
                             case "IF":
-                                System.out.println("If");
+                                System.out.print("If/r/n");
                                 break;
                             case "THEN":
-                                System.out.println("Then");
+                                System.out.print("Then/r/n");
                                 break;
                             case "ELSE":
-                                System.out.println("Else");
+                                System.out.print("Else/r/n");
                                 break;
                             default:
-                                System.out.println("Ident(" + reserve + ")");
+                                System.out.print("Ident(" + reserve + ")/r/n");
                         }
                         run.token = new StringBuilder();
                         continue;
@@ -75,36 +72,36 @@ public class Token {
                             run.token.append((char)n);
                             n = input.read();
                         }
-                        System.out.println("Int(" + run.token.toString() + ")");
+                        System.out.print("Int(" + run.token.toString() + ")/r/n");
                         run.token = new StringBuilder();
                         continue;
                     }
                     else if ((char)n == '+') {
-                        System.out.println("Plus");
+                        System.out.print("Plus/r/n");
                     }
                     else if ((char)n == '*') {
-                        System.out.println("Star");
+                        System.out.print("Star/r/n");
                     }
                     else if ((char)n == ',') {
-                        System.out.println("Comma");
+                        System.out.print("Comma/r/n");
                     }
                     else if ((char)n == '(') {
-                        System.out.println("LParenthesis");
+                        System.out.print("LParenthesis/r/n");
                     }
                     else if ((char)n == ')') {
-                        System.out.println("RParenthesis");
+                        System.out.print("RParenthesis/r/n");
                     }
                     else if ((char)n == ':') {
                         n = input.read();
                         if ((char)n == '=')
-                            System.out.println("Assign");
+                            System.out.print("Assign/r/n");
                         else {
-                            System.out.println("Colon");
+                            System.out.print("Colon/r/n");
                             continue;
                         }
                     }
                     else {
-                        System.out.println("Unknown");
+                        System.out.print("Unknown/r/n");
                         break;
                     }
                     n = input.read();
