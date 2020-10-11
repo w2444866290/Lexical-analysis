@@ -107,10 +107,10 @@ public class Token {
                     n = input.read();
                 }
             }catch (IOException e) {
-                System.out.println("File input error!");
+                e.getStackTrace();
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+            e.getStackTrace();
         }
     }
 }
