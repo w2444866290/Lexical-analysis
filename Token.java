@@ -21,11 +21,14 @@ public class Token {
                 int n = 0;
                 n = input.read();
                 // skip space in front of page
-                while (Character.isSpaceChar((char)n) || Character.isWhitespace((char)n))
+                while (Character.isSpaceChar((char)n) || Character.isWhitespace((char)n)) {
+                    System.out.print((char)n);
                     n = input.read();
+                }
                 while (n != -1) {
                     // skip space between words
                     if (Character.isSpaceChar((char)n) || Character.isWhitespace((char)n)) {
+                        System.out.print((char)n);
                         n = input.read();
                         continue;
                     }
