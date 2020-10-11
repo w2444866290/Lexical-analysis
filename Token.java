@@ -9,7 +9,7 @@ public class Token {
 
     public Token() {
         token = new StringBuilder();
-        file = new File("G:\\Tools\\IJ workspace\\src\\token.txt");
+        file = new File($input);
     }
 
     public static void main(String[] args) {
