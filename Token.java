@@ -15,7 +15,7 @@ public class Token {
     public static void main(String[] args) {
         Token run = new Token();
         try {
-            file = new File("token.txt");
+            file = new File(args[0]);
             FileInputStream input = new FileInputStream(file);
             try {
                 int n = 0;
